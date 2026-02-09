@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Teddy Day Bhavya 🧸❤️</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffb6c1,#ffc0cb,#ffd1dc);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+.container{
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(12px);
+  border-radius:20px;
+  padding:30px 20px;
+  max-width:360px;
+  width:90%;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  animation:fadeIn 1.5s ease;
+}
+
+h1{font-size:24px;color:#c2185b;}
+
+.teddy{
+  font-size:90px;
+  margin:20px 0;
+  cursor:pointer;
+  animation:float 2.5s ease-in-out infinite;
+}
+
+.hug{animation:hug 0.6s ease-in-out 3;}
+
+.lines{
+  font-size:14px;
+  color:#4a004f;
+  line-height:1.6;
+  margin-bottom:20px;
+  min-height:90px;
+}
+
+button{
+  background:#c2185b;
+  color:white;
+  border:none;
+  padding:10px 18px;
+  border-radius:25px;
+  font-size:14px;
+  cursor:pointer;
+  margin:5px;
+}
+
+.choiceBtns{display:none;}
+
+.result{
+  margin-top:15px;
+  font-size:16px;
+  font-weight:600;
+  color:#880e4f;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-15px);}
+}
+
+@keyframes hug{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.15);}
+  100%{transform:scale(1);}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(0.9);}
+  to{opacity:1;transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="song" src="song.mp3"></audio>
+
+<div class="container">
+  <h1>Happy Teddy Day<br>Bhavya ❤️</h1>
+
+  <div class="teddy" onclick="changeLine()">🧸</div>
+
+  <div class="lines" id="lineBox">
+    Teddy par tap karo dudu ka hug lene 🤗
+  </div>
+
+  <button onclick="playSong()">Play Song 🎶</button>
+
+  <div class="choiceBtns" id="choices">
+    <button onclick="yesClick()">YES 💖</button>
+    <button onclick="noClick()">NO 😜</button>
+  </div>
+
+  <div class="result" id="resultText"></div>
+</div>
+
+<script>
+const lines=[
+ "Tum meri sabse pyari teddy ho 🧸❤️",
+ "Tumhari smile meri weakness hai ✨",
+ "Jab tum udaas hoti ho, dudu ka hug free hai 🤗",
+ "Aur ab ek last sawal hai… 🥺"
+];
+
+let i=0;
+
+function changeLine(){
+  const teddy=document.querySelector('.teddy');
+  teddy.classList.add('hug');
+  setTimeout(()=>teddy.classList.remove('hug'),600);
+
+  if(i < lines.length){
+    document.getElementById("lineBox").innerHTML=lines[i];
+    i++;
+  }else{
+    document.getElementById("lineBox").innerHTML=
+    "Will you be my forever teddy? 🧸💍";
+    document.getElementById("choices").style.display="block";
+  }
+}
+
+function playSong(){
+  document.getElementById("song").play();
+}
+
+function yesClick(){
+  document.getElementById("resultText").innerHTML="I knew it 💖🧸";
+}
+
+function noClick(){
+  document.getElementById("resultText").innerHTML="Click on Yes 😜👉";
+}
+</script>
+
+</body>
+</html>
